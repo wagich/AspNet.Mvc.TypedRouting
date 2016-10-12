@@ -79,7 +79,7 @@
                 }
 
                 var methodInfo = methodCallExpression.Method;
-
+		
                 // Find controller action descriptor from the provider with the same extracted method info.
                 // This search is potentially slow, so it is cached after the first lookup.
                 var controllerActionDescriptor = GetActionDescriptorFromCache(methodInfo);
@@ -208,12 +208,6 @@
 
                 var expressionArgument = arguments[i];
 
-                if (expressionArgument.NodeType == ExpressionType.Convert)
-                {
-                    // Expression which contains converting from type to type
-                    var expressionArgumentAsUnary = (UnaryExpression)expressionArgument;
-                    expressionArgument = expressionArgumentAsUnary.Operand;
-                }
 
                 if (expressionArgument.NodeType == ExpressionType.Call)
                 {
@@ -231,20 +225,6 @@
                 {
                     // Expression of type c => c.Action({const}) - value can be extracted without compiling.
                     value = ((ConstantExpression)expressionArgument).Value;
-                }
-                else if (expressionArgument.NodeType == ExpressionType.MemberAccess
-                    && ((MemberExpression)expressionArgument).Member is FieldInfo)
-                {
-                    // Expression of type c => c.Action(id)
-                    // Value can be extracted without compiling.
-                    var memberAccessExpr = (MemberExpression)expressionArgument;
-                    var constantExpression = (ConstantExpression)memberAccessExpr.Expression;
-                    if (constantExpression != null)
-                    {
-                        var innerMemberName = memberAccessExpr.Member.Name;
-                        var compiledLambdaScopeField = constantExpression.Value.GetType().GetField(innerMemberName);
-                        value = compiledLambdaScopeField.GetValue(constantExpression.Value);
-                    }
                 }
                 else
                 {

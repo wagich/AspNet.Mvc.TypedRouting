@@ -117,7 +117,7 @@
                     }
                 }
                 
-                ApplyAdditionaRouteValues(additionalRouteValues, routeValues);
+                ApplyAdditionalRouteValues(additionalRouteValues, routeValues);
 
                 if (addControllerAndActionToRouteValues)
                 {
@@ -262,7 +262,7 @@
             return result;
         }
 
-        private static void ApplyAdditionaRouteValues(object routeValues, IDictionary<string, object> result)
+        private static void ApplyAdditionalRouteValues(object routeValues, IDictionary<string, object> result)
         {
             if (routeValues != null)
             {

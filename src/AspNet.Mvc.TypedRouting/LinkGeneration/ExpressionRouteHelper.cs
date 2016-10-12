@@ -79,6 +79,14 @@
                 }
 
                 var methodInfo = methodCallExpression.Method;
+                
+                // if the methodInfo points to a method on an interface, find the corresponding method on the implementing controller
+                if (methodInfo.DeclaringType.GetTypeInfo().IsInterface)
+                {
+                    var interfaceMap = controllerType.GetTypeInfo().GetRuntimeInterfaceMap(methodInfo.DeclaringType);
+                    var index = Array.IndexOf(interfaceMap.InterfaceMethods, methodInfo);
+                    methodInfo = interfaceMap.TargetMethods[index];
+                }
 		
                 // Find controller action descriptor from the provider with the same extracted method info.
                 // This search is potentially slow, so it is cached after the first lookup.

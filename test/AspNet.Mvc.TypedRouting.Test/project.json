@@ -6,8 +6,8 @@
   "testRunner": "xunit",
 
   "dependencies": {
-    "AspNet.Mvc.TypedRouting": "1.2.0-*",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-*",
+    "AspNet.Mvc.TypedRouting": "*",
+    "Microsoft.AspNetCore.Mvc": "1.0.1",
     "dotnet-test-xunit": "1.0.0-*",
     "Moq": "4.6.36-*",
     "xunit": "2.1.0"

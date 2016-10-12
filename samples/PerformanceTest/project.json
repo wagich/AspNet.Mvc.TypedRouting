@@ -4,8 +4,8 @@
   },
 
   "dependencies": {
-    "AspNet.Mvc.TypedRouting": "1.2.0-*",
-    "Microsoft.AspNetCore.Mvc": "1.0.0-*",
+    "AspNet.Mvc.TypedRouting": "*",
+    "Microsoft.AspNetCore.Mvc": "1.0.1",
     "Moq": "4.5.21" 
   },
 

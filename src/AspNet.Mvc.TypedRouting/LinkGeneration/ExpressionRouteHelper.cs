@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Concurrent;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Linq.Expressions;
     using System.Reflection;
     using System.Threading.Tasks;
@@ -255,7 +256,19 @@
                 // We are interested only in not null route values.
                 if (value != null)
                 {
-                    result[methodParameterName] = value;
+                    var parameterDescriptor = parameters[i] as ControllerParameterDescriptor;
+                    if (parameterDescriptor != null && parameterDescriptor.ParameterInfo.GetCustomAttribute<FromQueryAttribute>() != null)
+                    {
+                        var valueProvider = value as IQueryValueProvider;
+                        if (valueProvider != null)
+                        {
+                            ApplyAdditionalRouteValues(valueProvider.GetRouteValues(), result);
+                        }
+                    }
+                    else
+                    {
+                        result[methodParameterName] = value;
+                    }
                 }
             }
 

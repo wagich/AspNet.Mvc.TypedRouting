@@ -1,35 +1,23 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<Description>AspNet.Mvc.TypedRouting is a class library allowing typed expression based route registration and link generation for ASP.NET Core MVC. See the project repository for more information and available features.</Description>
+		<Description>AspNet.Mvc.TypedRouting is a class library allowing typed link generation for ASP.NET Core MVC.</Description>
 		<Copyright>2015-2016 Ivaylo Kenov</Copyright>
-		<AssemblyTitle>ASP.NET Core MVC Typed Routing</AssemblyTitle>
-		<VersionPrefix>1.4.2-custom</VersionPrefix>
-		<Authors>Ivaylo Kenov</Authors>
-		<TargetFrameworks>netstandard1.6;net462</TargetFrameworks>
-		<NoWarn>$(NoWarn);CS1591;CS1573</NoWarn>
-		<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
-		<GenerateDocumentationFile>true</GenerateDocumentationFile>
-		<RuntimeFrameworkVersion>1.1.2</RuntimeFrameworkVersion>
-		<AssemblyName>AspNet.Mvc.TypedRouting</AssemblyName>
+		<AssemblyTitle>ASP.NET Core MVC typed link generation</AssemblyTitle>
+		<VersionPrefix>2.0.0-beta002</VersionPrefix>
+		<Authors>Ivaylo Kenov, Michael Wagner</Authors>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+		<GenerateDocumentationFile>false</GenerateDocumentationFile>
 		<PackageId>AspNet.Mvc.TypedRouting</PackageId>
 		<PackageTags>asp.net core mvc typed routing routes links expressions lambda</PackageTags>
-		<PackageIconUrl>https://raw.githubusercontent.com/ivaylokenov/AspNet.Mvc.TypedRouting/master/tools/nuget-logo.png</PackageIconUrl>
-		<PackageProjectUrl>https://github.com/ivaylokenov/AspNet.Mvc.TypedRouting</PackageProjectUrl>
-		<PackageLicenseUrl>https://github.com/ivaylokenov/AspNet.Mvc.TypedRouting/blob/master/LICENSE</PackageLicenseUrl>
-		<RepositoryType>git</RepositoryType>
-		<RepositoryUrl>git://github.com/ivaylokenov/AspNet.Mvc.TypedRouting</RepositoryUrl>
-		<GenerateAssemblyTitleAttribute>false</GenerateAssemblyTitleAttribute>
-		<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
-		<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
-		<GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
-		<GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
-		<GenerateAssemblyCopyrightAttribute>false</GenerateAssemblyCopyrightAttribute>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+		<RepositoryUrl>https://github.com/wagich/AspNet.Mvc.TypedRouting</RepositoryUrl>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Mvc" Version="1.1.3" />
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
 
 </Project>

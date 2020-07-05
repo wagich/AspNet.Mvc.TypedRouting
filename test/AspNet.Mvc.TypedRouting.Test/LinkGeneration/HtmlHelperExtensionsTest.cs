@@ -11,12 +11,18 @@
     using Moq;
     using Xunit;
     using Microsoft.AspNetCore.Http;
+	using Microsoft.AspNetCore.Mvc.Testing;
 
-    // Since the original MVC helper is living hell to test, these unit tests just test whether
-    // the typed extensions pass correct values.
-    [Collection("TypedRoutingTests")]
-    public class HtmlHelperExtensionsTest
+	// Since the original MVC helper is living hell to test, these unit tests just test whether
+	// the typed extensions pass correct values.
+	public class HtmlHelperExtensionsTest : ICollectionFixture<WebApplicationFactory<TestStartup>>
     {
+        private readonly WebApplicationFactory<TestStartup> _factory;
+
+        public HtmlHelperExtensionsTest(WebApplicationFactory<TestStartup> factory)
+        {
+            _factory = factory;
+        }
         [Fact]
         public void ActionLink_PassesCorrectValuesToHtmlHelper()
         {
